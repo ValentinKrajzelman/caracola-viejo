@@ -1,20 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { BrowserRouter, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> nd save to reload.
-        </p>
-      </header>
-    </div>
-  );
-}
+import ComoProducimos from "./components/comoProducimos";
+import ContactForm from "./components/contactForm";
+import FAQ from "./components/FAQ";
+import Footer from "./components/footer";
+import Hero from "./components/hero";
+import Navbar from "./components/navbar";
+import QuienesSomos from "./components/quienesSomos";
+import Talleres from "./components/talleres";
+
+const App = () => {
+
+    return (
+        <BrowserRouter>
+            <div>
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={
+                        <div>
+                            <Hero />
+                            <QuienesSomos />
+                            <ComoProducimos />
+                            <ContactForm /><FAQ />
+                        </div>}></Route>
+                    <Route path="/talleres" element={
+                        <div>
+                            <Talleres />
+                            <ContactForm />
+                        </div>}></Route>
+                </Routes>
+                <Footer />
+            </div>
+        </BrowserRouter>
+    );
+};
 
 export default App;
